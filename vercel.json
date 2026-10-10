@@ -1,15 +1,47 @@
 {
   "cleanUrls": true,
   "functions": {
-    "api/wallet.js": { "maxDuration": 20 },
-    "api/config.js": { "maxDuration": 5 }
+    "api/wallet.js": {
+      "maxDuration": 20
+    },
+    "api/config.js": {
+      "maxDuration": 5
+    },
+    "api/shot.js": {
+      "maxDuration": 60
+    }
   },
   "headers": [
-    { "source": "/fonts/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
-    { "source": "/ads.json", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] },
-    { "source": "/(.*)", "headers": [
-      { "key": "X-Content-Type-Options", "value": "nosniff" },
-      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-    ] }
+    {
+      "source": "/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/ads.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
   ]
 }
