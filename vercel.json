@@ -6,9 +6,6 @@
     },
     "api/config.js": {
       "maxDuration": 5
-    },
-    "api/shot.js": {
-      "maxDuration": 60
     }
   },
   "headers": [

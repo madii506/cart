@@ -21,11 +21,12 @@
 <meta name="twitter:image" content="https://cart-zeta-eight.vercel.app/img/og.png">
 <link rel="preload" href="/fonts/tts-900.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/tts-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://api.dexscreener.com" crossorigin>
 <style>
 @font-face{font-family:"TikTok Sans";src:url(/fonts/tts-500.woff2) format("woff2");font-weight:400 600;font-display:swap}
 @font-face{font-family:"TikTok Sans";src:url(/fonts/tts-700.woff2) format("woff2");font-weight:700 800;font-display:swap}
 @font-face{font-family:"TikTok Sans";src:url(/fonts/tts-900.woff2) format("woff2");font-weight:900;font-display:swap}
-:root{--bg:#000;--bg2:#09090b;--line:#1e1e23;--line2:#2b2b31;--text:#fff;--mute:#a9a9ae;--dim:#6e6e76;--red:#fe2c55;--cyan:#25f4ee;--ink:#161823;--field:#0e0e11;--r:12px}
+:root{--bg:#000;--bg2:#09090b;--line:#1e1e23;--line2:#2b2b31;--text:#fff;--mute:#a9a9ae;--dim:#6e6e76;--red:#fe2c55;--cyan:#25f4ee;--ink:#161823;--field:#0e0e11;--yel:#fcd34d}
 *{box-sizing:border-box;margin:0;padding:0}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%}
@@ -34,14 +35,14 @@ a{color:inherit;text-decoration:none}
 button,input{font:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none}
 img{display:block;max-width:100%}
-.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 24px}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 24px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
 
-/* nav: empty / centred links / empty, on a hairline */
+/* nav */
 nav.top{position:sticky;top:0;z-index:40;background:rgba(0,0,0,.78);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line)}
 nav.top .in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:56px}
-nav.top .links{display:flex;gap:28px;font-size:14px;font-weight:700;color:var(--mute);overflow-x:auto;scrollbar-width:none;max-width:calc(100vw - 32px)}
+nav.top .links{display:flex;gap:26px;font-size:14px;font-weight:700;color:var(--mute);overflow-x:auto;scrollbar-width:none;max-width:calc(100vw - 32px)}
 nav.top .links::-webkit-scrollbar{display:none}
 nav.top .links a{position:relative;padding:17px 4px;min-width:44px;text-align:center;white-space:nowrap;transition:color .2s}
 nav.top .links a:hover,nav.top .links a.on{color:#fff}
@@ -49,12 +50,16 @@ nav.top .links a.on::after{content:"";position:absolute;left:50%;bottom:9px;widt
 
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-#bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9}
-.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center;min-height:min(820px,calc(100svh - 56px));padding-top:48px;padding-bottom:56px}
-.wm{font-weight:900;font-size:clamp(104px,16vw,218px);line-height:.86;letter-spacing:-.045em;text-shadow:-.022em -.022em 0 var(--cyan),.022em .022em 0 var(--red);margin-left:-.04em}
-.lede{margin-top:26px;font-size:clamp(20px,2.3vw,27px);font-weight:500;color:#d9d9de;max-width:22ch;line-height:1.25}
+#bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:28px;align-items:center;min-height:min(860px,calc(100svh - 56px));padding-top:40px;padding-bottom:48px}
+.bgwm{position:absolute;right:-2vw;bottom:-6vw;font-weight:900;font-size:34vw;line-height:.8;letter-spacing:-.06em;color:transparent;-webkit-text-stroke:1px #17171b;pointer-events:none;user-select:none}
+.kick{display:inline-flex;align-items:center;gap:8px;height:30px;padding:0 12px;border-radius:999px;background:#111114;box-shadow:inset 0 0 0 1px var(--line2);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#d9d9de}
+.kick i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(254,44,85,.6);animation:ping2 1.6s infinite}
+@keyframes ping2{70%{box-shadow:0 0 0 7px rgba(254,44,85,0)}100%{box-shadow:0 0 0 0 rgba(254,44,85,0)}}
+.wm{margin-top:18px;font-weight:900;font-size:clamp(100px,14.5vw,206px);line-height:.86;letter-spacing:-.045em;text-shadow:-.022em -.022em 0 var(--cyan),.022em .022em 0 var(--red);margin-left:-.04em}
+.lede{margin-top:24px;font-size:clamp(20px,2.2vw,26px);font-weight:500;color:#d9d9de;max-width:21ch;line-height:1.25}
 .lede b{color:#fff;font-weight:700}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:50px;padding:0 22px;border-radius:10px;font-weight:700;font-size:16px;transition:transform .15s,background .2s,border-color .2s,color .2s;white-space:nowrap}
 .btn:active{transform:scale(.97)}
 .btn.red{background:var(--red);color:#fff}
@@ -72,40 +77,138 @@ nav.top .links a.on::after{content:"";position:absolute;left:50%;bottom:9px;widt
 .pill button{height:36px;padding:0 12px;border-radius:999px;background:#fff;color:#000;font-weight:700;font-size:13px}
 .lk{display:inline-flex;align-items:center;height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line2);font-weight:700;font-size:14px;transition:border-color .2s,background .2s}
 .lk:hover{border-color:#55555d;background:#0e0e11}
+.hint{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px 16px;color:var(--dim);font-size:13px;font-weight:500}
+.hint b{color:var(--mute);font-weight:700}
 
-/* phone */
-.stage{display:flex;justify-content:center;position:relative}
-.phone{position:relative;width:clamp(248px,25vw,322px);padding:9px;border-radius:46px;background:#0c0c0e;border:1.5px solid #3a3a40;box-shadow:0 0 0 1px #000}
+/* phones */
+.stage{position:relative;display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.6vw,22px)}
+.phone{--pw:300px;position:relative;flex:none;width:var(--pw);padding:calc(var(--pw)*.03);border-radius:calc(var(--pw)*.155);background:#0c0c0e;border:1.5px solid #3a3a40;box-shadow:0 0 0 1px #000}
 .phone::before,.phone::after{content:"";position:absolute;width:3px;border-radius:2px;background:#2c2c31}
 .phone::before{left:-4.5px;top:24%;height:11%}
 .phone::after{right:-4.5px;top:28%;height:15%}
-.screen{position:relative;aspect-ratio:1080/2340;border-radius:37px;overflow:hidden;background:#000;isolation:isolate}
-.island{position:absolute;top:1.25%;left:50%;width:20%;height:2.65%;transform:translateX(-50%);background:#000;border-radius:99px;z-index:5}
-.reel{position:absolute;left:0;top:0;width:100%;height:91.4529%;overflow:hidden}
-.track{height:100%;transition:transform .62s cubic-bezier(.2,.8,.2,1)}
-.track img{width:100%;height:100%;object-fit:cover}
-.chrome{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
-.prog{position:absolute;left:0;right:0;top:calc(91.4529% - .28%);height:.28%;background:rgba(255,255,255,.27);z-index:4}
-.prog i{display:block;height:100%;width:0;background:#fff}
-.tap{position:absolute;left:0;right:0;top:0;height:91.4529%;z-index:2;cursor:pointer}
-.hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:6}
+.phone.sm{--pw:212px}
+.phone.sm.l{transform:translateY(54px)}
+.phone.sm.r{transform:translateY(-40px)}
+.screen{position:relative;aspect-ratio:1080/2340;border-radius:calc(var(--pw)*.125);overflow:hidden;background:#000;isolation:isolate;container-type:inline-size;user-select:none;-webkit-user-select:none;touch-action:pan-x}
+.phone.sm .screen{pointer-events:none}
+.island{position:absolute;top:1.25%;left:50%;width:20%;height:2.65%;transform:translateX(-50%);background:#000;border-radius:99px;z-index:9}
+.chrome{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:6}
+.reel{position:absolute;left:0;top:0;width:100%;height:91.4529%;overflow:hidden;z-index:1}
+.post{position:absolute;inset:0;will-change:transform;transform:translateY(100%)}
+.vid{position:absolute;inset:0;overflow:hidden}
+.scrim{position:absolute;left:0;right:0;pointer-events:none}
+.scrim.t{top:0;height:17%;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,0))}
+.scrim.b{bottom:0;height:46%;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.62))}
+.prog{position:absolute;left:0;right:0;top:calc(91.4529% - .26%);height:.26%;background:rgba(255,255,255,.25);z-index:5}
+.prog i{display:block;height:100%;width:100%;background:#fff;transform-origin:0 50%;transform:scaleX(0)}
+.screen.run .prog i{animation:prog var(--dw,4800ms) linear forwards}
+@keyframes prog{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.screen.paused *,.screen.off *{animation-play-state:paused!important}
+.playic{position:absolute;left:50%;top:44%;width:17cqw;height:17cqw;margin:-8.5cqw 0 0 -8.5cqw;z-index:7;opacity:0;transform:scale(1.25);transition:opacity .2s,transform .2s;pointer-events:none}
+.playic svg{width:100%;height:100%;fill:rgba(255,255,255,.82);filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+.screen.paused .playic{opacity:1;transform:none}
+
+/* a post's UI */
+.rail{position:absolute;right:1.6cqw;bottom:3.4%;width:14cqw;display:flex;flex-direction:column;align-items:center;gap:4.4cqw;z-index:3}
+.rail .av{position:relative;width:11.6cqw;height:11.6cqw;border-radius:50%;padding:0;margin-bottom:2.4cqw}
+.rail .av img{width:100%;height:100%;border-radius:50%;object-fit:cover;box-shadow:0 0 0 .55cqw #fff;background:#222}
+.rail .av b{position:absolute;left:50%;bottom:-2.3cqw;width:4.8cqw;height:4.8cqw;margin-left:-2.4cqw;border-radius:50%;background:var(--red);color:#fff;font-size:4cqw;line-height:4.8cqw;font-weight:900;text-align:center;transition:background .25s,transform .25s}
+.rail .av.on b{background:#fff;color:var(--red);transform:scale(.92)}
+.rail .act{width:10.6cqw;height:10.6cqw;padding:0;display:grid;place-items:center}
+.rail .act svg{width:100%;height:100%;fill:#fff;filter:drop-shadow(0 .3cqw .8cqw rgba(0,0,0,.35));transition:fill .2s}
+.rail .like.on svg{fill:var(--red);animation:likepop .45s cubic-bezier(.3,1.6,.5,1)}
+.rail .save.on svg{fill:var(--yel);animation:likepop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes likepop{0%{transform:scale(.6)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
+.rail .disc{width:11cqw;height:11cqw;border-radius:50%;background:radial-gradient(circle,#2a2a2e 0 34%,#151517 35% 100%);box-shadow:inset 0 0 0 .5cqw #3c3c42;display:grid;place-items:center;animation:spin 5s linear infinite;margin-top:1cqw}
+.rail .disc img{width:5.6cqw;height:5.6cqw;border-radius:50%;object-fit:cover}
+@keyframes spin{to{transform:rotate(360deg)}}
+.meta{position:absolute;left:3.8cqw;right:18.5cqw;bottom:3.2%;z-index:3;color:#fff;text-shadow:0 .2cqw .6cqw rgba(0,0,0,.35)}
+.meta .who{font-size:4.5cqw;font-weight:700;line-height:1.2}
+.meta .cap{margin-top:1.2cqw;font-size:3.9cqw;line-height:1.32;font-weight:500;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta .cap b{font-weight:700}
+.meta .spons{display:inline-block;margin-top:1.6cqw;padding:.5cqw 1.4cqw;border-radius:.8cqw;background:rgba(255,255,255,.18);font-size:3cqw;font-weight:700;letter-spacing:.01em}
+.ctab{display:flex;align-items:center;gap:2cqw;width:100%;height:9.6cqw;margin-top:2cqw;padding:0 3cqw;border-radius:1.1cqw;background:rgba(255,255,255,.2);color:#fff;font-size:4cqw;font-weight:700;text-align:left;transition:background .45s,color .45s;text-shadow:none}
+.ctab .ic{width:5.4cqw;height:5.4cqw;flex:none}
+.ctab span{flex:1}
+.ctab .chev{width:4.4cqw;height:4.4cqw}
+.post.on .ctab{animation:ctaOn .01s 1.7s forwards}
+@keyframes ctaOn{to{background:var(--red)}}
+.meta .snd{margin-top:2.2cqw;display:flex;align-items:center;gap:1.6cqw;font-size:3.6cqw;font-weight:500;overflow:hidden;white-space:nowrap}
+.meta .snd svg{width:4cqw;height:4cqw;flex:none;fill:#fff}
+.meta .snd span{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,#000 80%,transparent)}
+.meta .snd i{display:inline-block;font-style:normal;padding-right:8cqw;animation:mq2 7s linear infinite}
+@keyframes mq2{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+/* stickers (TikTok text) */
+.stk{position:absolute;left:50%;top:21%;max-width:88%;transform:translateX(-50%);padding:1.5cqw 2.9cqw;border-radius:1.6cqw;background:#fff;color:#000;font-size:5.5cqw;font-weight:700;line-height:1.2;text-align:center;z-index:2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stk.k{background:#000;color:#fff}
+.post.on .stk{animation:stkIn .55s .3s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes stkIn{from{transform:translateX(-50%) scale(.4);opacity:0}to{transform:translateX(-50%) scale(1);opacity:1}}
+
+/* $CART ad creatives */
+.ad .art{position:absolute;left:50%;top:44%;width:62cqw;margin-left:-31cqw;transform:translateY(-50%)}
+.ad .art svg{width:100%;height:auto;overflow:visible}
+.ad .bok{position:absolute;inset:-20%;background-image:radial-gradient(circle,rgba(255,255,255,.22) 0 1.6cqw,transparent 1.7cqw),radial-gradient(circle,rgba(255,255,255,.14) 0 2.6cqw,transparent 2.7cqw);background-size:23cqw 31cqw,37cqw 29cqw;background-position:0 0,11cqw 9cqw;animation:bok 14s linear infinite}
+@keyframes bok{to{transform:translateY(-12%)}}
+.ad.black .bok,.ad.ink .bok{display:none}
+.post.on .ad.red .art{animation:rollIn 1.05s cubic-bezier(.2,.9,.25,1.12) both}
+@keyframes rollIn{from{transform:translate(-140%,-50%) rotate(-8deg)}to{transform:translate(0,-50%)}}
+.ad .coin{transform-box:fill-box;transform-origin:50% 50%}
+.post.on .ad.red .coin,.post.on .ad.ink .coin{animation:drop .8s .8s cubic-bezier(.3,1.55,.5,1) both}
+@keyframes drop{from{transform:translateY(-260%) rotate(-30deg);opacity:0}30%{opacity:1}to{transform:none;opacity:1}}
+.post.on .ad.black .cy{animation:gl1 1.9s steps(1) infinite}
+.post.on .ad.black .rd{animation:gl2 1.9s steps(1) infinite}
+@keyframes gl1{0%,100%{transform:translate(-16px,-16px)}12%{transform:translate(-34px,-10px)}16%{transform:translate(-16px,-16px)}58%{transform:translate(-8px,-26px)}62%{transform:translate(-16px,-16px)}}
+@keyframes gl2{0%,100%{transform:translate(16px,16px)}12%{transform:translate(30px,8px)}16%{transform:translate(16px,16px)}58%{transform:translate(10px,28px)}62%{transform:translate(16px,16px)}}
+.post.on .ad.black .art{animation:shake 1.9s steps(1) infinite}
+@keyframes shake{0%,100%{transform:translateY(-50%)}12%{transform:translate(1.2cqw,-50%)}16%{transform:translateY(-50%)}}
+.post.on .ad.cyan .art{animation:beat .85s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:translateY(-50%) scale(1)}45%{transform:translateY(-50%) scale(1.045)}}
+.post.on .ad.ink .art{animation:slideIn 1s cubic-bezier(.2,.9,.25,1.1) both}
+@keyframes slideIn{from{transform:translate(140%,-50%) rotate(8deg)}to{transform:translate(0,-50%)}}
+
+/* meme posts: TikTok photo mode */
+.meme{background:#111}
+.meme .blur{position:absolute;inset:-12%;width:124%;height:124%;max-width:none;object-fit:cover;filter:blur(7cqw) brightness(.62) saturate(1.2)}
+.meme .photo{position:absolute;left:0;top:50%;width:100%;aspect-ratio:1;max-width:none;object-fit:cover;transform:translateY(-58%)}
+.post.on .meme .photo{animation:kb 7s ease-out both}
+@keyframes kb{from{transform:translateY(-58%) scale(1)}to{transform:translateY(-58%) scale(1.09)}}
+.meme .dots{position:absolute;left:50%;bottom:31%;transform:translateX(-50%);display:flex;gap:1.2cqw;z-index:2}
+.meme .dots i{width:1.6cqw;height:1.6cqw;border-radius:50%;background:rgba(255,255,255,.45)}
+.meme .dots i:first-child{background:#fff}
+.post.noimg .photo,.post.noimg .blur{visibility:hidden}
+
+/* hearts + comment sheet */
+.hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:8}
 .hearts i{position:absolute;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);animation:fly var(--d) cubic-bezier(.25,.6,.35,1) forwards}
 .hearts i svg{width:100%;height:100%;fill:var(--c);filter:drop-shadow(0 2px 3px rgba(0,0,0,.25))}
 .hearts i.big{animation:pop 1s cubic-bezier(.2,.9,.3,1.2) forwards}
-@keyframes fly{0%{transform:translate(0,0) scale(.4) rotate(var(--r));opacity:0}12%{opacity:1;transform:translate(0,-10%) scale(1) rotate(var(--r))}100%{transform:translate(var(--dx),-210px) scale(.85) rotate(calc(var(--r)*-1));opacity:0}}
-@keyframes pop{0%{transform:scale(.2) rotate(var(--r));opacity:0}25%{transform:scale(1.15) rotate(var(--r));opacity:1}45%{transform:scale(1) rotate(var(--r))}100%{transform:translateY(-60px) scale(1.1) rotate(var(--r));opacity:0}}
+@keyframes fly{0%{transform:translate(0,0) scale(.4) rotate(var(--r));opacity:0}12%{opacity:1;transform:translate(0,-10%) scale(1) rotate(var(--r))}100%{transform:translate(var(--dx),-48cqw) scale(.85) rotate(calc(var(--r)*-1));opacity:0}}
+@keyframes pop{0%{transform:scale(.2) rotate(var(--r));opacity:0}25%{transform:scale(1.15) rotate(var(--r));opacity:1}45%{transform:scale(1) rotate(var(--r))}100%{transform:translateY(-14cqw) scale(1.1) rotate(var(--r));opacity:0}}
+.sheet{position:absolute;left:0;right:0;bottom:8.55%;height:52%;z-index:7;background:#fff;color:#161823;border-radius:3.6cqw 3.6cqw 0 0;transform:translateY(105%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.sheet.open{transform:none}
+.sheet .hd{position:relative;padding:4cqw;text-align:center;font-size:3.8cqw;font-weight:700;border-bottom:1px solid #eee}
+.sheet .x{position:absolute;right:2cqw;top:50%;transform:translateY(-50%);width:9cqw;height:9cqw;font-size:4.4cqw;color:#161823}
+.sheet .bd{padding:4.4cqw;font-size:3.6cqw;line-height:1.4;overflow:auto}
+.sheet .c{display:flex;gap:3cqw}
+.sheet .c img{width:9cqw;height:9cqw;border-radius:50%;flex:none}
+.sheet .c small{display:block;color:#8a8b91;font-size:3.2cqw;margin-bottom:.6cqw}
+.sheet .c a{display:inline-block;margin-top:2cqw;color:var(--red);font-weight:700}
+.sheet .off{text-align:center;color:#8a8b91;padding-top:10cqw}
 
-/* sticker marquee */
-.marq{overflow:hidden;border-bottom:1px solid var(--line);padding:18px 0;background:var(--bg2)}
-.marq .row{display:flex;gap:12px;width:max-content;animation:mq 46s linear infinite}
+/* sticker band (red) */
+.marq{overflow:hidden;border-bottom:1px solid var(--line);padding:16px 0;background:var(--red)}
+.marq .row{display:flex;align-items:center;gap:12px;width:max-content;animation:mq 50s linear infinite}
 .marq:hover .row{animation-play-state:paused}
-.stk{display:inline-flex;align-items:center;height:40px;padding:0 16px;border-radius:9px;font-weight:700;font-size:17px;white-space:nowrap;background:#fff;color:#000}
-.stk.k{background:#000;color:#fff;box-shadow:inset 0 0 0 1px var(--line2)}
-.stk.r{background:var(--red);color:#fff}
-.stk.c{background:var(--cyan);color:#000}
+.st2{display:inline-flex;align-items:center;gap:8px;height:42px;padding:0 16px;border-radius:9px;font-weight:700;font-size:17px;white-space:nowrap;background:#fff;color:#000}
+.st2.k{background:#000;color:#fff}
+.st2.c{background:var(--cyan);color:#000}
+.st2 img{width:26px;height:26px;border-radius:50%;object-fit:cover}
+.st2 .up{color:#0f9d58}.st2 .dn{color:#d61f45}
+.st2.k .up{color:#38e07b}.st2.k .dn{color:#ff6b86}
 @keyframes mq{to{transform:translateX(-50%)}}
 
-/* sections: full-bleed bands, one hairline, alternating tint, numbered eyebrow */
+/* sections */
 section.band{border-bottom:1px solid var(--line);padding:96px 0;scroll-margin-top:56px}
 section.band.alt{background:var(--bg2)}
 .eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
@@ -114,19 +217,33 @@ section.band.alt{background:var(--bg2)}
 h2{margin-top:14px;font-weight:900;font-size:clamp(30px,4.4vw,52px);line-height:1.02;letter-spacing:-.03em;max-width:20ch}
 .sub{margin-top:14px;color:var(--mute);font-size:17px;max-width:62ch}
 
-/* 01 how */
-.flow{position:relative;height:2px;background:var(--line2);margin:56px 0 0;overflow:visible}
-.flow i{position:absolute;top:-4px;left:0;width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(254,44,85,.18);animation:flow 5.2s cubic-bezier(.45,0,.55,1) infinite}
-@keyframes flow{0%{left:0}100%{left:calc(100% - 10px)}}
-.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+/* 01 how, with small working pictures */
+.steps{margin-top:52px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
 .step{padding:30px 28px 6px 0}
 .step+.step{padding-left:28px;border-left:1px solid var(--line)}
-.step .n{display:flex;align-items:center;justify-content:space-between;color:var(--dim);font-weight:900;font-size:14px}
-.step .n svg{width:30px;height:30px;color:#fff}
-.step h3{margin-top:26px;font-size:22px;font-weight:900;letter-spacing:-.01em}
+.viz{height:132px;border-radius:14px;background:#0d0d10;box-shadow:inset 0 0 0 1px var(--line);position:relative;overflow:hidden;display:grid;place-items:center}
+.viz.bars{display:flex;align-items:flex-end;justify-content:center;gap:7px;padding:22px 18px}
+.viz.bars i{width:12px;border-radius:3px;background:var(--cyan);height:30%;animation:bar 2.4s ease-in-out infinite}
+.viz.bars i:nth-child(even){background:var(--red)}
+.viz.bars i:nth-child(1){animation-delay:-.2s}.viz.bars i:nth-child(2){animation-delay:-1.1s}.viz.bars i:nth-child(3){animation-delay:-.5s}.viz.bars i:nth-child(4){animation-delay:-1.7s}.viz.bars i:nth-child(5){animation-delay:-.8s}.viz.bars i:nth-child(6){animation-delay:-1.4s}.viz.bars i:nth-child(7){animation-delay:-.3s}
+@keyframes bar{0%,100%{height:24%}50%{height:86%}}
+.viz.wal .w{width:118px;height:80px;border-radius:14px;border:3px solid #fff;position:relative;overflow:hidden}
+.viz.wal .w::before{content:"";position:absolute;right:-3px;top:24px;width:34px;height:28px;border:3px solid #fff;border-radius:9px;background:#0d0d10;z-index:2}
+.viz.wal .fill{position:absolute;left:0;bottom:0;width:100%;background:linear-gradient(var(--cyan),var(--cyan)) bottom/100% 100% no-repeat;animation:fill 3.6s cubic-bezier(.45,0,.55,1) infinite}
+@keyframes fill{0%{height:8%;opacity:.9}80%{height:92%;opacity:1}100%{height:8%;opacity:.9}}
+.viz.mini .ph{width:64px;height:112px;border-radius:12px;border:2px solid #3a3a40;background:var(--red);display:grid;place-items:center;overflow:hidden;position:relative}
+.viz.mini .ph svg{width:44px;animation:beat2 1s ease-in-out infinite}
+.viz.mini .ph i{position:absolute;left:8px;right:8px;bottom:8px;height:9px;border-radius:3px;background:#fff}
+@keyframes beat2{50%{transform:scale(1.08)}}
+.viz.rcpt .r{width:98px;padding:12px 12px 16px;background:#fff;color:#000;border-radius:6px 6px 2px 2px;font-weight:900;font-size:12px;text-align:center;box-shadow:0 10px 0 -6px #fff;animation:print 3.2s cubic-bezier(.2,.8,.2,1) infinite}
+.viz.rcpt .r i{display:block;height:5px;border-radius:2px;background:#d4d4d8;margin-top:7px}
+.viz.rcpt .r i:nth-child(2){width:70%}.viz.rcpt .r i:nth-child(3){width:85%}
+@keyframes print{0%{transform:translateY(40px);opacity:0}25%,85%{transform:none;opacity:1}100%{transform:translateY(-10px);opacity:0}}
+.step .n{margin-top:22px;color:var(--dim);font-weight:900;font-size:14px}
+.step h3{margin-top:6px;font-size:22px;font-weight:900;letter-spacing:-.01em}
 .step p{margin-top:8px;color:var(--mute);font-size:15px}
 
-/* 02 wallet */
+/* 02 wallet, 03 ledger, 04 studio, 05 maths, 06 faq (unchanged) */
 .offline{margin-top:40px;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
 .chip{display:inline-flex;align-items:center;gap:9px;height:34px;padding:0 14px;border:1px solid var(--line2);border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .chip .d{width:8px;height:8px;border-radius:50%;background:var(--red)}
@@ -137,15 +254,13 @@ h2{margin-top:14px;font-weight:900;font-size:clamp(30px,4.4vw,52px);line-height:
 .stats.show{display:grid}
 .stat{padding:24px 20px 24px 0}
 .stat+.stat{padding-left:20px;border-left:1px solid var(--line)}
-.k{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.kl{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .v{margin-top:10px;font-size:clamp(24px,2.6vw,34px);font-weight:900;letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums}
 .s{margin-top:6px;color:var(--mute);font-size:14px;font-variant-numeric:tabular-nums}
 .addr{margin-top:22px;display:none;flex-wrap:wrap;align-items:center;gap:10px}
 .addr.show{display:flex}
 .mkt{margin-top:28px;display:none;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
 .mkt.show{display:grid}
-
-/* 03 ledger */
 .ledger{margin-top:40px}
 .lrow{display:grid;grid-template-columns:52px 120px 120px minmax(0,1fr) 170px 120px;gap:16px;align-items:center;padding:18px 0;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
 .lrow.h{color:var(--mute);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:12px 0}
@@ -153,8 +268,6 @@ h2{margin-top:14px;font-weight:900;font-size:clamp(30px,4.4vw,52px);line-height:
 .lrow a:hover{text-decoration-color:#fff}
 .tot{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px;color:var(--mute)}
 .tot b{color:#fff;font-weight:900}
-
-/* 04 studio */
 .studio{margin-top:44px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:56px;align-items:start}
 .fld{display:block;margin-bottom:18px}
 .fld>span{display:block;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
@@ -168,10 +281,9 @@ h2{margin-top:14px;font-weight:900;font-size:clamp(30px,4.4vw,52px);line-height:
 .chips .sw{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
 .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
 .say{margin-top:14px;min-height:22px;color:var(--mute);font-size:14px}
-.prev .phone{width:clamp(250px,24vw,300px)}
+.prev .phone{--pw:clamp(250px,24vw,300px)}
+.prev .screen{container-type:normal}
 .prev canvas{position:absolute;inset:0;width:100%;height:100%}
-
-/* 05 maths */
 .calc{margin-top:44px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
 .rng{margin-bottom:26px}
 .rng .top{display:flex;justify-content:space-between;align-items:baseline}
@@ -182,8 +294,6 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--red);height:28px
 .out .v{margin:0;font-size:clamp(26px,3vw,40px)}
 .out.big .v{color:var(--red)}
 .live-vol{margin-top:4px}
-
-/* 06 faq */
 .faq{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
 details{border-top:1px solid var(--line)}
 summary{list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:22px 0;font-weight:700;font-size:18px;cursor:pointer}
@@ -192,14 +302,16 @@ summary::after{content:"+";font-weight:500;font-size:26px;line-height:1;color:va
 details[open] summary::after{transform:rotate(45deg)}
 details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
 
-/* reveal */
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
 .rv.vis{opacity:1;transform:none}
 .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}
 
+@media (max-width:1180px){.phone.sm.r{display:none}}
 @media (max-width:980px){
-  .hero .wrap{grid-template-columns:1fr;gap:48px;min-height:0;padding-top:40px}
+  .hero .wrap{grid-template-columns:1fr;gap:44px;min-height:0;padding-top:36px}
   .stage{order:2}
+  .phone.sm.l{display:none}
+  .phone{--pw:min(300px,74vw)}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .step:nth-child(3){padding-left:0;border-left:0}
   .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -222,15 +334,13 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
   .steps{grid-template-columns:1fr}
   .step,.step+.step{padding:24px 0 6px;border-left:0}
   .step+.step{border-top:1px solid var(--line)}
-  .flow{display:none}
-  .btn{height:50px}
   .cta .btn{flex:1 1 auto}
+  .bgwm{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *{scroll-behavior:auto!important}
-  .marq .row,.flow i{animation:none}
+  .marq .row,.viz *,.rail .disc,.meta .snd i,.ad .bok{animation:none!important}
   .rv{opacity:1;transform:none;transition:none}
-  .track{transition:none}
 }
 </style>
 </head>
@@ -254,28 +364,20 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
 
 <header class="hero" id="top">
   <canvas id="bg" aria-hidden="true"></canvas>
+  <div class="bgwm" aria-hidden="true">cart</div>
   <div class="wrap">
     <div>
-      <h1 class="wm rv">cart</h1>
-      <p class="lede rv d1">the memecoin that buys its own <b>tiktok ads.</b></p>
-      <div class="cta rv d2">
+      <span class="kick rv"><i></i>Sponsored · on your For You page</span>
+      <h1 class="wm rv d1">cart</h1>
+      <p class="lede rv d2">the memecoin that buys its own <b>tiktok ads.</b></p>
+      <div class="cta rv d3">
         <a class="btn red" href="#studio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Make an ad</a>
         <a class="btn ghost" href="#how">How it works</a>
       </div>
       <div class="carow" id="caRow"></div>
+      <div class="hint rv d3" id="hint"><span><b>Tap</b> to pause</span><span><b>Double-tap</b> to like</span><span><b>Swipe</b> or <b>↑ ↓</b> to scroll</span></div>
     </div>
-    <div class="stage rv d3">
-      <div class="phone" id="heroPhone">
-        <div class="screen">
-          <div class="reel"><div class="track" id="track"></div></div>
-          <div class="tap" id="tap" role="button" tabindex="0" aria-label="Next ad"></div>
-          <div class="prog"><i id="prog"></i></div>
-          <img class="chrome" src="/img/chrome.png" alt="" width="1080" height="2340">
-          <div class="hearts" id="hearts"></div>
-          <i class="island"></i>
-        </div>
-      </div>
-    </div>
+    <div class="stage rv d2" id="stage"></div>
   </div>
 </header>
 
@@ -286,12 +388,11 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
     <div class="eyebrow rv"><b>01</b> — How it works</div>
     <h2 class="rv d1">Every trade buys the next ad.</h2>
     <p class="sub rv d2">No promises about price. One promise about the fees: they turn into TikTok ads, and you can check every one.</p>
-    <div class="flow rv" aria-hidden="true"><i></i></div>
     <div class="steps">
-      <div class="step rv"><div class="n">1<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><h3>Trade</h3><p>Every buy and every sell of $CART pays pump.fun's creator fee.</p></div>
-      <div class="step rv d1"><div class="n">2<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2"/></svg></div><h3>Fill the wallet</h3><p>The fees land in one public ad wallet. Anyone can watch it fill.</p></div>
-      <div class="step rv d2"><div class="n">3<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 9l4 3-4 3z" fill="currentColor"/></svg></div><h3>Run the ad</h3><p>When there's enough for a campaign, it goes live on TikTok.</p></div>
-      <div class="step rv d3"><div class="n">4<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div><h3>Post the receipt</h3><p>Every campaign goes on the ledger: the spend, the ad, the results.</p></div>
+      <div class="step rv"><div class="viz bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="n">1</div><h3>Trade</h3><p>Every buy and every sell of $CART pays pump.fun's creator fee.</p></div>
+      <div class="step rv d1"><div class="viz wal" aria-hidden="true"><div class="w"><i class="fill"></i></div></div><div class="n">2</div><h3>Fill the wallet</h3><p>The fees land in one public ad wallet. Anyone can watch it fill.</p></div>
+      <div class="step rv d2"><div class="viz mini" aria-hidden="true"><div class="ph" id="miniPh"><i></i></div></div><div class="n">3</div><h3>Run the ad</h3><p>When there's enough for a campaign, it goes live on TikTok.</p></div>
+      <div class="step rv d3"><div class="viz rcpt" aria-hidden="true"><div class="r">RECEIPT<i></i><i></i><i></i></div></div><div class="n">4</div><h3>Post the receipt</h3><p>Every campaign goes on the ledger: the spend, the ad, the results.</p></div>
     </div>
   </div>
 </section>
@@ -307,18 +408,18 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
       <button class="btn ghost" id="wRetry" type="button" hidden>Retry ↻</button>
     </div>
     <div class="stats" id="wStats">
-      <div class="stat"><div class="k">Ad budget</div><div class="v" id="sBudget">—</div><div class="s" id="sBudgetUsd"></div></div>
-      <div class="stat"><div class="k">In the wallet</div><div class="v" id="sSol">—</div><div class="s">SOL</div></div>
-      <div class="stat"><div class="k">Fees to claim</div><div class="v" id="sUnc">—</div><div class="s">SOL in pump.fun's vaults</div></div>
-      <div class="stat"><div class="k">Spent on ads</div><div class="v" id="sSpent">$0</div><div class="s">from the ledger</div></div>
-      <div class="stat"><div class="k">Campaigns</div><div class="v" id="sCamp">0</div><div class="s" id="sLast">none yet</div></div>
+      <div class="stat"><div class="kl">Ad budget</div><div class="v" id="sBudget">—</div><div class="s" id="sBudgetUsd"></div></div>
+      <div class="stat"><div class="kl">In the wallet</div><div class="v" id="sSol">—</div><div class="s">SOL</div></div>
+      <div class="stat"><div class="kl">Fees to claim</div><div class="v" id="sUnc">—</div><div class="s">SOL in pump.fun's vaults</div></div>
+      <div class="stat"><div class="kl">Spent on ads</div><div class="v" id="sSpent">$0</div><div class="s">from the ledger</div></div>
+      <div class="stat"><div class="kl">Campaigns</div><div class="v" id="sCamp">0</div><div class="s" id="sLast">none yet</div></div>
     </div>
     <div class="addr" id="wAddr"></div>
     <div class="mkt" id="mkt">
-      <div class="stat"><div class="k">$CART price</div><div class="v" id="mPrice">—</div></div>
-      <div class="stat"><div class="k">Market cap</div><div class="v" id="mCap">—</div></div>
-      <div class="stat"><div class="k">24h volume</div><div class="v" id="mVol">—</div></div>
-      <div class="stat"><div class="k">24h change</div><div class="v" id="mCh">—</div></div>
+      <div class="stat"><div class="kl">$CART price</div><div class="v" id="mPrice">—</div></div>
+      <div class="stat"><div class="kl">Market cap</div><div class="v" id="mCap">—</div></div>
+      <div class="stat"><div class="kl">24h volume</div><div class="v" id="mVol">—</div></div>
+      <div class="stat"><div class="kl">24h change</div><div class="v" id="mCh">—</div></div>
     </div>
   </div>
 </section>
@@ -379,16 +480,16 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
     <p class="sub rv d2">Volume × creator fee = ad budget. Budget ÷ CPM × 1,000 = views. pump.fun sets the fee by market cap; the CPM is your own guess.</p>
     <div class="calc">
       <div class="rv">
-        <div class="rng"><div class="top"><span class="k">24h volume</span><output id="oVol">$0</output></div><input type="range" id="cVol" min="0" max="1000" value="500" aria-label="24 hour volume"></div>
-        <div class="rng"><div class="top"><span class="k">Creator fee</span><output id="oFee">0.30%</output></div><input type="range" id="cFee" min="0.05" max="0.95" step="0.05" value="0.30" aria-label="Creator fee percent"></div>
-        <div class="rng"><div class="top"><span class="k">TikTok CPM</span><output id="oCpm">$6.00</output></div><input type="range" id="cCpm" min="1" max="20" step="0.5" value="6" aria-label="Cost per thousand views"></div>
+        <div class="rng"><div class="top"><span class="kl">24h volume</span><output id="oVol">$0</output></div><input type="range" id="cVol" min="0" max="1000" value="500" aria-label="24 hour volume"></div>
+        <div class="rng"><div class="top"><span class="kl">Creator fee</span><output id="oFee">0.30%</output></div><input type="range" id="cFee" min="0.05" max="0.95" step="0.05" value="0.30" aria-label="Creator fee percent"></div>
+        <div class="rng"><div class="top"><span class="kl">TikTok CPM</span><output id="oCpm">$6.00</output></div><input type="range" id="cCpm" min="1" max="20" step="0.5" value="6" aria-label="Cost per thousand views"></div>
         <button class="btn ghost live-vol" type="button" id="cLive" hidden>Use $CART's live 24h volume</button>
       </div>
       <div class="outs rv d1">
-        <div class="out big"><span class="k">Ad budget a day</span><span class="v" id="rDay">$0</span></div>
-        <div class="out"><span class="k">TikTok views a day</span><span class="v" id="rViews">0</span></div>
-        <div class="out"><span class="k">A week of ads</span><span class="v" id="rWeek">$0</span></div>
-        <div class="out"><span class="k">A month of ads</span><span class="v" id="rMonth">$0</span></div>
+        <div class="out big"><span class="kl">Ad budget a day</span><span class="v" id="rDay">$0</span></div>
+        <div class="out"><span class="kl">TikTok views a day</span><span class="v" id="rViews">0</span></div>
+        <div class="out"><span class="kl">A week of ads</span><span class="v" id="rWeek">$0</span></div>
+        <div class="out"><span class="kl">A month of ads</span><span class="v" id="rMonth">$0</span></div>
       </div>
     </div>
   </div>
@@ -414,6 +515,7 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
     </div>
   </div>
 </section>
+
 
 <script>
 (() => {
@@ -449,44 +551,206 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
   }), { rootMargin: '-45% 0px -50% 0px' });
   $$('section.band').forEach((s) => so.observe(s));
 
-  /* ---------------- hero feed: swipe up every few seconds under the fixed app chrome */
-  const FEED = ['/img/feed-1.webp', '/img/feed-2.webp', '/img/feed-3.webp', '/img/feed-4.webp'];
-  const track = $('#track'), prog = $('#prog');
-  [...FEED, FEED[0]].forEach((src, i) => { const im = new Image(); im.src = src; im.alt = i < FEED.length ? 'A $CART ad in the For You feed' : ''; im.decoding = 'async'; if (i) im.loading = 'lazy'; track.appendChild(im); });
-  let idx = 0, timer = null, paused = false; const DWELL = 3800;
-  const runProg = () => { prog.style.transition = 'none'; prog.style.width = '0'; void prog.offsetWidth; prog.style.transition = `width ${DWELL}ms linear`; prog.style.width = '100%'; };
-  const go = (n) => {
-    idx = n; track.style.transition = RM ? 'none' : ''; track.style.transform = `translateY(${-idx * 100}%)`;
-    if (idx === FEED.length) setTimeout(() => { track.style.transition = 'none'; idx = 0; track.style.transform = 'translateY(0)'; void track.offsetWidth; track.style.transition = ''; }, RM ? 0 : 640);
-    runProg();
+  /* ---------------- the cart, as SVG (same geometry as the brand files) */
+  const roundPoly = (pts, r) => {
+    let d = ''; const n = pts.length;
+    for (let i = 0; i < n; i++) {
+      const p0 = pts[(i - 1 + n) % n], p1 = pts[i], p2 = pts[(i + 1) % n];
+      const v1 = [p0[0] - p1[0], p0[1] - p1[1]], v2 = [p2[0] - p1[0], p2[1] - p1[1]], l1 = Math.hypot(...v1), l2 = Math.hypot(...v2);
+      const a = [p1[0] + v1[0] / l1 * r, p1[1] + v1[1] / l1 * r], b = [p1[0] + v2[0] / l2 * r, p1[1] + v2[1] / l2 * r];
+      d += (i ? 'L' : 'M') + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + 'Q' + p1[0] + ' ' + p1[1] + ' ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1);
+    }
+    return d + 'Z';
   };
-  const loop = () => { clearTimeout(timer); timer = setTimeout(() => { if (!paused && !document.hidden) go(idx + 1); loop(); }, DWELL); };
-  runProg(); loop();
-  const heroPhone = $('#heroPhone');
-  heroPhone.addEventListener('mouseenter', () => { paused = true; });
-  heroPhone.addEventListener('mouseleave', () => { paused = false; });
+  const BASKET = roundPoly([[232, 300], [948, 300], [874, 604], [308, 604]], 44);
+  const cartBody = (fg, ground, coin, coinFg, dollar) => `<path d="M66 196H206L332 700H852" fill="none" stroke="${fg}" stroke-width="88" stroke-linecap="round" stroke-linejoin="round"/><circle cx="396" cy="866" r="76" fill="${fg}"/><circle cx="800" cy="866" r="76" fill="${fg}"/>` +
+    (coin ? `<g class="coin"><circle cx="598" cy="188" r="154" fill="${coinFg || fg}"/><text x="598" y="226" text-anchor="middle" font-family="TikTok Sans,Arial,sans-serif" font-weight="900" font-size="206" fill="${dollar || ground}">$</text></g><rect x="440" y="270" width="316" height="34" fill="${ground}"/>` : '') +
+    `<path d="${BASKET}" fill="${fg}"/>`;
+  const cartSVG = ({ fg = '#fff', ground = '#fe2c55', coin = true, coinFg, dollar, cls = '' } = {}) =>
+    `<svg class="cart ${cls}" viewBox="${coin ? '22 34 932 908' : '22 152 932 790'}" aria-hidden="true">${cartBody(fg, ground, coin, coinFg, dollar)}</svg>`;
+  const splitSVG = (ground = '#000') => `<svg class="cart" viewBox="-10 2 996 972" aria-hidden="true"><g class="cy" transform="translate(-16 -16)">${cartBody('#25f4ee', ground, true, null, '#25f4ee')}</g><g class="rd" transform="translate(16 16)">${cartBody('#fe2c55', ground, true, null, '#fe2c55')}</g><g>${cartBody('#fff', ground, true, null, '#000')}</g></svg>`;
+  $('#miniPh').insertAdjacentHTML('afterbegin', cartSVG({ fg: '#fff', ground: '#fe2c55' }));
 
-  /* hearts */
-  const HEART = '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
-  const HC = ['#fe2c55', '#25f4ee', '#ffffff', '#ff8fb1'];
-  const hearts = $('#hearts');
-  const spawn = (x, y, big) => {
-    if (hearts.childElementCount > 26) return;
-    const i = document.createElement('i'); i.innerHTML = HEART;
-    const s = big ? 86 : 16 + Math.random() * 14;
-    i.style.cssText = `left:${x}%;top:${y}%;--s:${s}px;--c:${big ? '#fe2c55' : HC[(Math.random() * HC.length) | 0]};--r:${(Math.random() * 36 - 18).toFixed(1)}deg;--dx:${(Math.random() * 50 - 30).toFixed(0)}px;--d:${(1.6 + Math.random() * 0.9).toFixed(2)}s`;
-    if (big) i.className = 'big';
-    hearts.appendChild(i); i.addEventListener('animationend', () => i.remove());
+  /* ---------------- content: $CART ads + memes trending right now (DexScreener, live) */
+  const ICON = {
+    heart: '<svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>',
+    cmt: '<svg viewBox="0 0 24 24"><path d="M12 3C6.48 3 2 6.82 2 11.5c0 2.62 1.4 4.96 3.6 6.5L5 21.6l4.15-2.06c.9.2 1.86.31 2.85.31 5.52 0 10-3.82 10-8.5S17.52 3 12 3z"/><circle cx="7.8" cy="11.5" r="1.35" fill="#2a2a2e"/><circle cx="12" cy="11.5" r="1.35" fill="#2a2a2e"/><circle cx="16.2" cy="11.5" r="1.35" fill="#2a2a2e"/></svg>',
+    save: '<svg viewBox="0 0 24 24"><path d="M6.5 2.5h11a1.5 1.5 0 0 1 1.5 1.5v17.5l-7-4.6-7 4.6V4a1.5 1.5 0 0 1 1.5-1.5z"/></svg>',
+    share: '<svg viewBox="0 0 24 24"><path d="M14 7.6V3.5l8 7.3-8 7.3v-4.2c-5.3 0-9 1.7-12 6 1-5.5 4.3-11.3 12-12.3z"/></svg>',
+    note: '<svg viewBox="0 0 24 24"><path d="M9 18.6a2.6 2.6 0 1 1-1.6-2.4V5.2l11.2-2.1v12.5a2.6 2.6 0 1 1-1.6-2.4V7.3L9 8.8z"/></svg>',
+    play: '<svg viewBox="0 0 24 24"><path d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z"/></svg>',
   };
-  if (!RM) setInterval(() => { if (!document.hidden && !paused) spawn(88 + Math.random() * 4, 57, false); }, 1300);
-  const tap = $('#tap'); let lastTap = 0, tapT = null;
-  tap.addEventListener('click', (e) => {
-    const r = tap.getBoundingClientRect(); const x = ((e.clientX - r.left) / r.width) * 100, y = ((e.clientY - r.top) / r.height) * 91.45;
-    const now = Date.now();
-    if (now - lastTap < 320) { clearTimeout(tapT); spawn(x, y, true); for (let k = 0; k < 5; k++) setTimeout(() => spawn(86 + Math.random() * 6, 57, false), k * 90); lastTap = 0; return; }
-    lastTap = now; tapT = setTimeout(() => go(idx + 1), 330);
-  });
-  tap.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(idx + 1); } });
+  const ADS = [
+    { type: 'ad', look: 'red', sticker: 'tiktok made me buy it', cap: 'every trade buys the next ad.', tags: '#tiktokmademebuyit $CART' },
+    { type: 'ad', look: 'black', sticker: 'pov: your coin runs its own ads', cap: 'the ads pay for themselves.', tags: '#fyp $CART' },
+    { type: 'ad', look: 'cyan', sticker: 'add to cart.', cap: 'you know what to do.', tags: '#tiktokshop $CART' },
+    { type: 'ad', look: 'ink', sticker: "you've seen this ad before", cap: 'and you will again.', tags: '#ad $CART' },
+  ];
+  const LOCAL = [['POPCAT', 'Popcat'], ['PNUT', 'Peanut the Squirrel'], ['MOODENG', 'Moo Deng'], ['FWOG', 'Fwog'], ['MICHI', 'michi'], ['BILLY', 'Billy'], ['HOUSE', 'Housecoin'], ['FARTCOIN', 'Fartcoin']]
+    .map(([sym, name]) => ({ type: 'meme', sym, name, img: '/img/memes/' + sym.toLowerCase() + '.webp', mcap: null, ch: null }));
+  let MEMES = LOCAL.slice(), LIVE = false;
+  const IMGU = (m) => 'https://dd.dexscreener.com/ds-data/tokens/solana/' + m + '.png?size=lg';
+  const CURATED = [['POPCAT', '7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr'], ['PNUT', '2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump'], ['MOODENG', 'ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY'], ['FWOG', 'A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump'], ['FARTCOIN', '9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump'], ['BILLY', '3B5wuUrMEi5yATD7on46hKfej3pfmd7t1RKgrsN3pump'], ['MICHI', '5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp'], ['HOUSE', 'DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump'], ['GOAT', 'CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump'], ['ZEREBRO', '8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn']];
+  const trending = async () => {
+    const cand = new Map(CURATED.map(([k, m]) => [m, k]));
+    try {
+      const [a, b] = await Promise.all(['https://api.dexscreener.com/token-boosts/top/v1', 'https://api.dexscreener.com/token-profiles/latest/v1'].map((u) => getJSON(u, 7000).catch(() => [])));
+      for (const x of [...(a || []), ...(b || [])]) if (x && x.chainId === 'solana' && x.tokenAddress && !cand.has(x.tokenAddress)) cand.set(x.tokenAddress, null);
+    } catch (e) {}
+    const mints = [...cand.keys()].slice(0, 90), best = {};
+    for (let i = 0; i < mints.length; i += 30) {
+      try { const arr = await getJSON('https://api.dexscreener.com/tokens/v1/solana/' + mints.slice(i, i + 30).join(','), 8000); for (const p of arr || []) { const m = p.baseToken && p.baseToken.address; if (m && (!best[m] || ((p.liquidity && p.liquidity.usd) || 0) > ((best[m].liquidity && best[m].liquidity.usd) || 0))) best[m] = p; } } catch (e) {}
+    }
+    return mints.map((m) => { const p = best[m]; if (!p) return null; const mc = p.marketCap || p.fdv || 0;
+      return { type: 'meme', mint: m, sym: String(p.baseToken.symbol || cand.get(m) || '?').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12) || '?', name: String(p.baseToken.name || '').slice(0, 40), img: (p.info && p.info.imageUrl) || IMGU(m), mcap: mc, ch: p.priceChange && p.priceChange.h24 != null ? Number(p.priceChange.h24) : null, vol: (p.volume && p.volume.h24) || 0 };
+    }).filter((t) => t && t.mcap >= 1e6 && t.sym !== '?').sort((x, y) => y.vol - x.vol).slice(0, 16);
+  };
+  const stickerFor = (m) => {
+    if (m.ch == null) return 'pov: $' + m.sym + ' is on your fyp';
+    const c = Math.round(m.ch);
+    if (c >= 15) return '$' + m.sym + ' is up ' + c + '% today';
+    if (c >= 0) return 'pov: $' + m.sym + ' on your fyp';
+    return '$' + m.sym + ' ' + c + '% today. still holding.';
+  };
+  const interleave = (ads, memes, every, aOff = 0, mOff = 0) => {
+    const out = []; const nm = memes.length; let ai = aOff, mi = mOff;
+    const rounds = Math.max(ads.length, Math.ceil(nm / every));
+    for (let r = 0; r < rounds; r++) { out.push(ads[ai++ % ads.length]); for (let k = 0; k < every && nm; k++) out.push(memes[mi++ % nm]); }
+    return out;
+  };
+
+  /* ---------------- one post: the video + its UI */
+  const BG = { red: '#fe2c55', black: '#000000', cyan: '#25f4ee', ink: '#161823' };
+  const vidHTML = (p) => {
+    if (p.type === 'ad') {
+      const art = p.look === 'black' ? splitSVG('#000') : cartSVG({ fg: p.look === 'red' ? '#fff' : p.look === 'cyan' ? '#161823' : '#fe2c55', ground: BG[p.look] });
+      return `<div class="vid ad ${p.look}" style="background:${BG[p.look]}"><i class="bok"></i><div class="stk ${p.look === 'cyan' ? 'k' : ''}">${esc(p.sticker)}</div><div class="art">${art}</div></div>`;
+    }
+    const src = esc(p.img);
+    return `<div class="vid meme"><img class="blur" src="${src}" alt="" referrerpolicy="no-referrer" loading="lazy"><img class="photo" src="${src}" alt="$${esc(p.sym)}" referrerpolicy="no-referrer" onerror="this.closest('.post').classList.add('noimg')"><div class="dots"><i></i><i></i><i></i></div><div class="stk">${esc(stickerFor(p))}</div></div>`;
+  };
+  const uiHTML = (p) => {
+    const ad = p.type === 'ad', av = ad ? '/img/pfp.png' : esc(p.img), who = ad ? 'cart' : '$' + esc(p.sym);
+    const cap = ad ? `${esc(p.cap)} <b>${esc(p.tags)}</b>` : `${esc(p.name || p.sym)}${p.mcap ? ' · ' + USD(p.mcap, { compact: true }) + ' mcap' : ''} <b>#memecoin #solana</b>`;
+    const snd = ad ? 'Promoted Music' : 'original sound - $' + esc(p.sym);
+    return `<div class="scrim t"></div><div class="scrim b"></div>
+      <div class="rail">
+        <button class="av" type="button" aria-label="Follow"><img src="${av}" alt="" referrerpolicy="no-referrer"><b>+</b></button>
+        <button class="act like" type="button" aria-label="Like">${ICON.heart}</button>
+        <button class="act cmt" type="button" aria-label="Comments">${ICON.cmt}</button>
+        <button class="act save" type="button" aria-label="Save">${ICON.save}</button>
+        <button class="act shr" type="button" aria-label="Share">${ICON.share}</button>
+        <span class="disc"><img src="${av}" alt="" referrerpolicy="no-referrer"></span>
+      </div>
+      <div class="meta">
+        <div class="who">${who}</div>
+        <div class="cap">${cap}</div>
+        ${ad ? `<span class="spons">Sponsored</span><button class="ctab" type="button">${cartSVG({ fg: 'currentColor', ground: 'transparent', coin: false, cls: 'ic' })}<span>Add to cart</span><svg class="chev" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ''}
+        <div class="snd">${ICON.note}<span><i>${snd}</i><i>${snd}</i></span></div>
+      </div>`;
+  };
+
+  /* ---------------- a phone running a For You feed: two slides, infinite in both directions */
+  const HC = ['#fe2c55', '#25f4ee', '#ffffff', '#ff8fb1'];
+  class Feed {
+    constructor(screen, seq, dwell, interactive) {
+      this.s = screen; this.seq = seq; this.k = 0; this.busy = false; this.inter = interactive;
+      this.s.style.setProperty('--dw', dwell + 'ms');
+      this.reel = screen.querySelector('.reel'); this.prog = screen.querySelector('.prog i'); this.hearts = screen.querySelector('.hearts');
+      this.a = this.slide(); this.b = this.slide(); this.cur = this.a; this.nxt = this.b;
+      this.fill(this.cur, 0); this.pos(this.cur, 0); this.pos(this.nxt, 100); this.cur.classList.add('on');
+      this.prog.addEventListener('animationend', () => this.go(1));
+      this.restart();
+      if (interactive) this.wire();
+    }
+    slide() { const el = document.createElement('div'); el.className = 'post'; this.reel.appendChild(el); return el; }
+    post(k) { const q = this.seq(); return q[((k % q.length) + q.length) % q.length]; }
+    fill(el, k) { const p = this.post(k); el.dataset.type = p.type; el.classList.remove('noimg'); el.innerHTML = vidHTML(p) + uiHTML(p); el._p = p; }
+    pos(el, y, anim) { el.style.transition = anim && !RM ? 'transform .6s cubic-bezier(.2,.8,.2,1)' : 'none'; el.style.transform = `translateY(${y}%)`; }
+    restart() { this.s.classList.remove('run'); void this.prog.offsetWidth; this.s.classList.add('run'); }
+    go(dir) {
+      if (this.busy) return; this.busy = true; const k = this.k + dir;
+      this.close(); this.fill(this.nxt, k); this.pos(this.nxt, dir > 0 ? 100 : -100); void this.nxt.offsetWidth;
+      this.pos(this.cur, dir > 0 ? -100 : 100, true); this.pos(this.nxt, 0, true); this.cur.classList.remove('on');
+      setTimeout(() => { [this.cur, this.nxt] = [this.nxt, this.cur]; this.k = k; this.cur.classList.add('on'); this.busy = false; this.restart(); }, RM ? 20 : 620);
+    }
+    heart(x, y, big) {
+      if (this.hearts.childElementCount > 24) return;
+      const i = document.createElement('i'); i.innerHTML = ICON.heart; const s = big ? 30 : 6 + Math.random() * 4;
+      i.style.cssText = `left:${x}%;top:${y}%;--s:${s}cqw;--c:${big ? '#fe2c55' : HC[(Math.random() * HC.length) | 0]};--r:${(Math.random() * 36 - 18).toFixed(1)}deg;--dx:${(Math.random() * 12 - 7).toFixed(1)}cqw;--d:${(1.5 + Math.random() * 0.8).toFixed(2)}s`;
+      if (big) i.className = 'big'; this.hearts.appendChild(i); i.addEventListener('animationend', () => i.remove());
+    }
+    sheet(open) {
+      let sh = this.s.querySelector('.sheet');
+      if (!sh) { sh = document.createElement('div'); sh.className = 'sheet'; this.s.appendChild(sh); }
+      if (!open) { sh.classList.remove('open'); return; }
+      const p = this.cur._p;
+      sh.innerHTML = p.type === 'ad'
+        ? `<div class="hd">Comments<button class="x" type="button" aria-label="Close">✕</button></div><div class="bd"><div class="c"><img src="/img/pfp.png" alt=""><div><small>cart · Creator · pinned</small>every trade buys the next ad. the receipts go on the ledger, every single one.<br><a href="#ledger" data-go="ledger">See the ledger ↓</a></div></div></div>`
+        : `<div class="hd">Comments<button class="x" type="button" aria-label="Close">✕</button></div><div class="bd"><p class="off">Comments are turned off for this post.</p></div>`;
+      requestAnimationFrame(() => sh.classList.add('open'));
+    }
+    close() { const sh = this.s.querySelector('.sheet'); if (sh) sh.classList.remove('open'); }
+    pause(on) { this.s.classList.toggle('paused', on); }
+    wire() {
+      const s = this.s; let y0 = 0, t0 = 0, lastTap = 0, tapT = null, moved = false;
+      s.insertAdjacentHTML('beforeend', `<div class="playic">${ICON.play}</div>`);
+      s.tabIndex = 0; s.setAttribute('role', 'region'); s.setAttribute('aria-label', 'For You feed. Arrow keys scroll, Enter likes.');
+      s.addEventListener('pointerdown', (e) => { if (e.target.closest('button,a,.sheet')) return; y0 = e.clientY; t0 = Date.now(); moved = false; });
+      s.addEventListener('pointermove', (e) => { if (t0 && Math.abs(e.clientY - y0) > 10) moved = true; });
+      s.addEventListener('pointerup', (e) => {
+        if (!t0 || e.target.closest('button,a,.sheet')) { t0 = 0; return; }
+        const dy = e.clientY - y0; t0 = 0;
+        if (moved && Math.abs(dy) > 36) { this.pause(false); this.go(dy < 0 ? 1 : -1); return; }
+        const r = s.getBoundingClientRect(), x = ((e.clientX - r.left) / r.width) * 100, y = ((e.clientY - r.top) / r.height) * 100;
+        const now = Date.now();
+        if (now - lastTap < 300) { clearTimeout(tapT); lastTap = 0; this.heart(x, y, true); const lk = this.cur.querySelector('.like'); if (lk && !lk.classList.contains('on')) lk.classList.add('on'); for (let k = 0; k < 4; k++) setTimeout(() => this.heart(84 + Math.random() * 8, 62, false), k * 90); return; }
+        lastTap = now; tapT = setTimeout(() => this.pause(!s.classList.contains('paused')), 300);
+      });
+      s.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown') { e.preventDefault(); this.go(1); } else if (e.key === 'ArrowUp') { e.preventDefault(); this.go(-1); }
+        else if (e.key === ' ') { e.preventDefault(); this.pause(!s.classList.contains('paused')); }
+        else if (e.key === 'Enter') { const lk = this.cur.querySelector('.like'); lk && lk.click(); }
+      });
+      s.addEventListener('click', (e) => {
+        const b = e.target.closest('button,a'); if (!b) return;
+        const p = this.cur._p;
+        if (b.classList.contains('like')) { b.classList.toggle('on'); if (b.classList.contains('on')) for (let k = 0; k < 5; k++) setTimeout(() => this.heart(84 + Math.random() * 8, 60, false), k * 80); }
+        else if (b.classList.contains('save')) b.classList.toggle('on');
+        else if (b.classList.contains('cmt')) this.sheet(true);
+        else if (b.classList.contains('x')) this.close();
+        else if (b.dataset.go) { e.preventDefault(); this.close(); document.getElementById(b.dataset.go).scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }); }
+        else if (b.classList.contains('shr')) window.open('https://x.com/intent/tweet?text=' + encodeURIComponent((p.type === 'ad' ? 'found $CART on my fyp. the memecoin that buys its own tiktok ads.' : 'found $' + p.sym + ' on my fyp.') + '\n\n' + location.origin), '_blank', 'noopener');
+        else if (b.classList.contains('av')) { b.classList.toggle('on'); b.lastElementChild.textContent = b.classList.contains('on') ? '✓' : '+'; if (p.type === 'ad' && CFG.tiktok && b.classList.contains('on')) window.open('https://www.tiktok.com/@' + encodeURIComponent(CFG.tiktok), '_blank', 'noopener'); }
+        else if (b.classList.contains('ctab')) { if (CFG.ca) window.open('https://pump.fun/coin/' + encodeURIComponent(CFG.ca), '_blank', 'noopener'); else document.getElementById('how').scrollIntoView({ behavior: RM ? 'auto' : 'smooth' }); }
+      });
+    }
+  }
+  const phoneHTML = (cls) => `<div class="phone ${cls}"><div class="screen"><div class="reel"></div><div class="prog"><i></i></div><img class="chrome" src="/img/chrome.png" alt="" width="1080" height="2340"><div class="hearts"></div><i class="island"></i></div></div>`;
+  const stage = $('#stage');
+  stage.innerHTML = phoneHTML('sm l') + phoneHTML('main') + phoneHTML('sm r');
+  const [sl, sm, sr] = $$('.screen', stage);
+  const rot = (a, n) => a.slice(n).concat(a.slice(0, n));
+  const FEEDS = [
+    new Feed(sm, () => interleave(ADS, MEMES, 2), 5200, true),
+    new Feed(sl, () => interleave(rot(ADS, 2), rot(MEMES, 3), 1), 6100, false),
+    new Feed(sr, () => interleave(rot(ADS, 1), rot(MEMES, 5), 1), 5700, false),
+  ];
+  // phones that are off-screen or in a hidden tab stop
+  const vis = new IntersectionObserver((es) => es.forEach((e) => e.target.classList.toggle('off', !e.isIntersecting)), { threshold: 0.05 });
+  $$('.screen', stage).forEach((s) => vis.observe(s));
+  document.addEventListener('visibilitychange', () => $$('.screen', stage).forEach((s) => s.classList.toggle('off', document.hidden)));
+  if (!RM) setInterval(() => { if (!document.hidden && !sm.classList.contains('paused') && !sm.classList.contains('off')) FEEDS[0].heart(86 + Math.random() * 6, 62, false); }, 1500);
+
+  /* ---------------- red sticker band: phrases + memes moving right now */
+  const band = () => {
+    const P = [['tiktok made me buy it', ''], ['pov: your coin runs its own ads', 'k'], ['add to cart.', 'c'], ["you've seen this ad before", ''], ['every trade buys the next ad', 'k'], ['not sponsored (it is)', ''], ['the algorithm sent me', 'c']];
+    const chips = MEMES.slice(0, 10).map((m) => `<span class="st2 k"><img src="${esc(m.img)}" alt="" referrerpolicy="no-referrer" onerror="this.remove()">$${esc(m.sym)}${m.ch != null ? ` <span class="${m.ch >= 0 ? 'up' : 'dn'}">${m.ch >= 0 ? '+' : ''}${m.ch.toFixed(1)}%</span>` : ''}</span>`);
+    const items = []; P.forEach(([t, k], i) => { items.push(`<span class="st2 ${k}">${esc(t)}</span>`); if (chips[i]) items.push(chips[i]); });
+    const html = items.join(''); $('#marq').innerHTML = html + html;
+  };
+  band();
+  trending().then((list) => { if (list.length >= 4) { MEMES = list; LIVE = true; band(); } }).catch(() => {});
 
   /* ---------------- hero background: small hearts drifting up */
   (() => {
@@ -504,13 +768,6 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
       }
     };
     requestAnimationFrame(tick);
-  })();
-
-  /* ---------------- sticker marquee */
-  (() => {
-    const S = [['tiktok made me buy it', ''], ['pov: your coin runs its own ads', 'k'], ['add to cart.', 'r'], ["you've seen this ad before", 'c'], ['#tiktokmademebuyit', 'k'], ['every trade buys the next ad', ''], ['not sponsored (it is)', 'r'], ['the algorithm sent me', 'k'], ['$CART', 'c']];
-    const html = S.map(([t, k]) => `<span class="stk ${k}">${esc(t)}</span>`).join('');
-    $('#marq').innerHTML = html + html;
   })();
 
   /* ---------------- config: CA row, wallet, market, ledger */
@@ -730,6 +987,7 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
   };
   [cVol, cFee, cCpm].forEach((el) => el.addEventListener('input', calc)); calc();
   $('#cLive').onclick = () => { if (!liveVol) return; cVol.value = String(Math.max(0, Math.min(1000, ((Math.log10(liveVol) - 4) / 3) * 1000))); calc(); live('Using the live 24 hour volume'); };
+
 })();
 </script>
 </body>
