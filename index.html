@@ -294,13 +294,60 @@ input[type=range]{width:100%;margin-top:12px;accent-color:var(--red);height:28px
 .out .v{margin:0;font-size:clamp(26px,3vw,40px)}
 .out.big .v{color:var(--red)}
 .live-vol{margin-top:4px}
-.faq{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
-details{border-top:1px solid var(--line)}
-summary{list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:22px 0;font-weight:700;font-size:18px;cursor:pointer}
-summary::-webkit-details-marker{display:none}
-summary::after{content:"+";font-weight:500;font-size:26px;line-height:1;color:var(--mute);transition:transform .25s}
-details[open] summary::after{transform:rotate(45deg)}
-details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
+/* 06 faq: a TikTok comment thread you can search, open and like */
+.faq{margin-top:40px;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:56px;align-items:start}
+.ask{position:sticky;top:84px}
+.askbox{display:flex;align-items:center;gap:10px;height:58px;padding:0 8px 0 18px;border-radius:999px;background:#151518;box-shadow:inset 0 0 0 1px var(--line2);transition:box-shadow .2s}
+.askbox:focus-within{box-shadow:inset 0 0 0 1.5px #fff}
+.askbox svg{width:20px;height:20px;flex:none;color:var(--mute)}
+.askbox input{flex:1;min-width:0;height:100%;border:0;background:none;outline:none;font-size:17px;color:#fff}
+.askbox input::placeholder{color:#6e6e76}
+.askbox button{height:42px;padding:0 16px;border-radius:999px;background:var(--red);color:#fff;font-weight:700;font-size:14px;transition:opacity .2s}
+.askbox button:disabled{opacity:.35;cursor:default}
+.qs{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.qs button{height:40px;padding:0 14px;border-radius:999px;background:#151518;box-shadow:inset 0 0 0 1px var(--line2);font-weight:700;font-size:14px;color:#d9d9de;transition:background .2s,color .2s,transform .15s}
+.qs button:hover{background:#fff;color:#000}
+.qs button:active{transform:scale(.96)}
+.found{margin-top:18px;min-height:22px;color:var(--mute);font-size:14px}
+.thread{border-top:1px solid var(--line)}
+.thr-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;color:var(--mute);font-size:14px;font-weight:700}
+.thr-h b{color:#fff}
+.thr-h button{height:36px;padding:0 14px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--line2);color:#fff;font-size:13px;font-weight:700}
+.thr-h button:hover{background:#151518}
+.cm{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:14px;padding:18px 0;border-top:1px solid var(--line);transition:background .3s}
+.cm.flash{animation:flash 1.2s ease}
+@keyframes flash{0%,100%{background:transparent}20%{background:rgba(254,44,85,.12)}}
+.cm[hidden]{display:none}
+.av2{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:19px;color:#000;flex:none}
+.av2.c1{background:var(--cyan)}.av2.c2{background:var(--red);color:#fff}.av2.c3{background:#fff}
+.av2 img{width:100%;height:100%;border-radius:50%}
+.cu{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);font-weight:700}
+.cu .pin{color:var(--red)}
+.cu .cr{height:20px;padding:0 7px;border-radius:5px;background:var(--red);color:#fff;font-size:11px;display:inline-flex;align-items:center;letter-spacing:.02em}
+.cq{margin-top:4px;font-size:18px;font-weight:700;line-height:1.35;cursor:pointer}
+.cq:hover{color:#fff;text-decoration:underline;text-decoration-color:#55555d;text-underline-offset:4px}
+.cmeta{display:flex;align-items:center;gap:16px;margin-top:8px;font-size:13px;color:var(--dim);font-weight:700}
+.vr{display:inline-flex;align-items:center;gap:6px;color:var(--mute);font-weight:700;font-size:13px;min-height:32px}
+.vr::before{content:"";width:22px;height:1px;background:#3a3a40}
+.vr svg{width:14px;height:14px;transition:transform .3s}
+.cm.open .vr svg{transform:rotate(180deg)}
+.rep{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s cubic-bezier(.2,.8,.2,1)}
+.cm.open .rep{grid-template-rows:1fr}
+.rep>div{overflow:hidden}
+.rin{display:grid;grid-template-columns:32px minmax(0,1fr);gap:10px;padding-top:14px}
+.rin .av2{width:32px;height:32px}
+.rin p{margin-top:3px;color:#d9d9de;font-size:16px;line-height:1.5}
+.typing{display:inline-flex;gap:4px;padding:10px 0 4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--mute);animation:tdot 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tdot{0%,60%,100%{opacity:.25;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+mark{background:rgba(37,244,238,.22);color:#fff;border-radius:3px;padding:0 1px}
+.lk2{display:flex;flex-direction:column;align-items:center;gap:2px;padding-top:6px;color:var(--mute);font-size:12px;font-weight:700;min-height:44px}
+.lk2 svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;transition:transform .2s}
+.lk2.on{color:var(--red)}
+.lk2.on svg{fill:var(--red);stroke:var(--red);animation:likepop .4s cubic-bezier(.3,1.6,.5,1)}
+.none{padding:26px 0;border-top:1px solid var(--line);color:var(--mute)}
+.none p{margin-bottom:14px}
 
 .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
 .rv.vis{opacity:1;transform:none}
@@ -321,7 +368,8 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
   .studio{grid-template-columns:1fr;gap:40px}
   .prev{display:flex;justify-content:center}
   .calc{grid-template-columns:1fr;gap:28px}
-  .faq{grid-template-columns:1fr}
+  .faq{grid-template-columns:1fr;gap:32px}
+  .ask{position:static}
   .lrow{grid-template-columns:40px 1fr 1fr;row-gap:6px}
   .lrow.h{display:none}
   .lrow>:nth-child(4),.lrow>:nth-child(5),.lrow>:nth-child(6){grid-column:2 / -1}
@@ -498,19 +546,21 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
 <section class="band alt" id="faq">
   <div class="wrap">
     <div class="eyebrow rv"><b>06</b> — FAQ</div>
-    <h2 class="rv d1">Straight answers.</h2>
     <div class="faq">
-      <div>
-        <details><summary>What is CART?</summary><p>A memecoin on pump.fun that spends its own creator fees on TikTok ads. Every trade pays the fee, the fee funds the next campaign, and every campaign is posted on this page.</p></details>
-        <details><summary>Where does the money come from?</summary><p>pump.fun's creator fee: a cut of every $CART buy and sell goes to the coin's creator wallet. That wallet is the ad wallet, and its address is published here the moment the coin is live.</p></details>
-        <details><summary>Who runs the ads?</summary><p>A person. Buying TikTok ads takes an ad account and a card, which a coin can't hold, so someone on the team runs each campaign from the ad wallet's money. The ledger shows exactly what was spent and what it bought.</p></details>
-        <details><summary>What can the ads say?</summary><p>Only what TikTok's ad policies allow. Those policies restrict financial and crypto promotion, so the ads sell the meme, not the token: no prices, no "buy" calls, no promises.</p></details>
+      <div class="ask rv d1">
+        <h2>Ask the comments.</h2>
+        <p class="sub">Every question people ask, answered by the creator. Search it, open it, like it.</p>
+        <form class="askbox" id="askForm" role="search" style="margin-top:28px">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+          <input id="askIn" type="search" placeholder="Ask anything…" aria-label="Search the questions" autocomplete="off" maxlength="120">
+          <button type="submit" id="askGo" disabled>Ask</button>
+        </form>
+        <div class="qs" id="qs"></div>
+        <p class="found" id="found" aria-live="polite"></p>
       </div>
-      <div>
-        <details><summary>How do I know the fees went to ads?</summary><p>The ledger lists every campaign with its date, its spend, the ad itself and its results, with links. The wallet section reads the balance straight from Solana, so the money in and the money out can be checked against each other.</p></details>
-        <details><summary>Why hasn't an ad run yet?</summary><p>TikTok sets a minimum budget for every campaign, so the fees build up in the wallet until there's enough for one. Then it runs, and it lands on the ledger.</p></details>
-        <details><summary>Is CART part of TikTok?</summary><p>No. CART is independent and is not affiliated with, endorsed by or sponsored by TikTok. TikTok is a trademark of its owner.</p></details>
-        <details><summary>Is $CART live?</summary><p id="faqLive">Not yet. When it is, the contract address appears at the top of this page and in the pinned post on X. Anyone posting an address before that is scamming you.</p></details>
+      <div class="thread rv d2">
+        <div class="thr-h"><span><b id="cmCount">0</b> questions · answered by <b>cart</b></span><button type="button" id="cmAll">Open all</button></div>
+        <div id="cmts"></div>
       </div>
     </div>
   </div>
@@ -782,7 +832,6 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
       <a class="lk" href="https://dexscreener.com/solana/${encodeURIComponent(CFG.ca)}" target="_blank" rel="noopener">Chart</a>${x}${tt}`;
     caRow.classList.add('show');
     $('#caCopy').onclick = (e) => copy(CFG.ca, e.currentTarget);
-    $('#faqLive').textContent = 'Yes. The contract address is at the top of this page and in the pinned post on X. Check it against both before you buy anything.';
   };
   const copy = async (txt, btn) => {
     try { await Promise.race([navigator.clipboard.writeText(txt), new Promise((_, rej) => setTimeout(() => rej(new Error('slow')), 900))]); } catch { const t = document.createElement('textarea'); t.value = txt; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); } catch {} t.remove(); }
@@ -976,6 +1025,87 @@ details p{padding:0 0 24px;color:var(--mute);max-width:60ch}
     document.fonts ? Promise.all([document.fonts.load(F(500, 40)), document.fonts.load(F(700, 40)), document.fonts.load(F(900, 40))]) : null
   ].map((p) => Promise.resolve(p).catch(() => null))).then(render);
   render();
+
+  /* ---------------- FAQ as a comment thread: search, open, like */
+  (() => {
+    const QA = [
+      { q: 'What is CART?', a: 'A memecoin on pump.fun that spends its own creator fees on TikTok ads. Every trade pays the fee, the fee funds the next campaign, and every campaign is posted on this page.', k: 'what is cart coin memecoin idea about explain', pin: true, chip: 'What is CART?' },
+      { q: 'Where does the money come from?', a: 'pump.fun’s creator fee. A cut of every $CART buy and sell goes to the coin’s creator wallet. That wallet is the ad wallet, and its address is published on this page the moment the coin is live.', k: 'money fee fees creator wallet budget fund pay paid where from pump', chip: 'Where’s the money from?' },
+      { q: 'Who runs the ads?', a: 'A person. Buying TikTok ads takes an ad account and a card, which a coin can’t hold, so someone on the team runs each campaign with the ad wallet’s money. The ledger shows exactly what was spent and what it bought.', k: 'who runs ads team person human buy campaign manager card account', chip: 'Who runs the ads?' },
+      { q: 'What can the ads say?', a: 'Only what TikTok’s ad policies allow. Those policies restrict financial and crypto promotion, so the ads sell the meme, not the token: no prices, no “buy” calls, no promises.', k: 'ads say policy policies rules allowed crypto banned content creative', chip: 'What can the ads say?' },
+      { q: 'How do I know the fees went to ads?', a: 'The ledger lists every campaign with its date, its spend, the ad itself and its results, with links. The wallet section reads the balance straight from Solana, so the money going in and the money going out can be checked against each other.', k: 'proof prove know trust verify receipts ledger transparent check scam rug', chip: 'How do I check?' },
+      { q: 'Why hasn’t an ad run yet?', a: 'TikTok sets a minimum budget for every campaign, so the fees build up in the wallet until there’s enough for one. Then it runs, and it lands on the ledger.', k: 'first ad when yet run minimum budget soon wait', chip: 'When’s the first ad?' },
+      { q: 'Is CART part of TikTok?', a: 'No. CART is independent and is not affiliated with, endorsed by or sponsored by TikTok. TikTok is a trademark of its owner.', k: 'tiktok official affiliated partner part endorsed sponsored owner', chip: 'Is this TikTok?' },
+    ];
+    const box = $('#cmts'), input = $('#askIn'), go = $('#askGo'), found = $('#found');
+    const HEART = '<svg viewBox="0 0 24 24"><path d="M12 20.3l-1.3-1.2C5.9 14.8 3 12.1 3 8.8 3 6.1 5.1 4 7.7 4c1.5 0 2.9.7 3.8 1.8h1C13.4 4.7 14.8 4 16.3 4 18.9 4 21 6.1 21 8.8c0 3.3-2.9 6-7.7 10.3z" stroke-linejoin="round"/></svg>';
+    const CHEV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>';
+    const cols = ['c1', 'c2', 'c3'];
+    box.innerHTML = QA.map((x, i) => `<article class="cm" id="q${i}" data-i="${i}">
+        <div class="av2 ${cols[i % 3]}" aria-hidden="true">?</div>
+        <div>
+          <div class="cu">Asked a lot${x.pin ? ' <span class="pin">· Pinned</span>' : ''}</div>
+          <p class="cq" data-t="${esc(x.q)}">${esc(x.q)}</p>
+          <div class="cmeta"><button class="vr" type="button" aria-expanded="false" aria-controls="r${i}"><span>View 1 reply</span>${CHEV}</button></div>
+          <div class="rep" id="r${i}"><div><div class="rin"><div class="av2"><img src="/img/pfp.png" alt=""></div><div><div class="cu">cart <span class="cr">Creator</span></div><p data-t="${esc(x.a)}"></p></div></div></div></div>
+        </div>
+        <button class="lk2" type="button" aria-pressed="false" aria-label="Like this question">${HEART}<span></span></button>
+      </article>`).join('');
+    $('#cmCount').textContent = QA.length;
+    $('#qs').innerHTML = QA.map((x, i) => `<button type="button" data-i="${i}">${esc(x.chip)}</button>`).join('');
+    const items = $$('.cm', box);
+    const typed = new Set();
+    const setOpen = (el, on, instant) => {
+      const i = Number(el.dataset.i), p = el.querySelector('.rin p'), b = el.querySelector('.vr');
+      el.classList.toggle('open', on); b.setAttribute('aria-expanded', on); b.firstElementChild.textContent = on ? 'Hide' : 'View 1 reply';
+      if (on && !typed.has(i)) {
+        typed.add(i);
+        if (instant || RM) p.innerHTML = p.dataset.t ? hl(p.dataset.t) : '';
+        else { p.innerHTML = '<span class="typing" aria-label="cart is typing"><i></i><i></i><i></i></span>'; setTimeout(() => { p.innerHTML = hl(p.dataset.t); }, 520); }
+      }
+    };
+    let terms = [];
+    const hl = (t) => { let h = esc(t); for (const w of terms) h = h.replace(new RegExp('(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>'); return h; };
+    const STOP = new Set(['the', 'a', 'an', 'is', 'it', 'of', 'to', 'and', 'or', 'do', 'does', 'i', 'you', 'what', 'how', 'why', 'who', 'are', 'can', 'in', 'on', 'for', 'this', 'that', 'my', 'me', 'be', 'cart', '$cart']);
+    const search = () => {
+      const q = input.value.trim().toLowerCase(); go.disabled = !q;
+      terms = q.split(/[^a-z0-9$’']+/).filter((w) => w.length > 1 && !STOP.has(w));
+      let n = 0;
+      items.forEach((el) => {
+        const x = QA[Number(el.dataset.i)], hay = (x.q + ' ' + x.a + ' ' + x.k).toLowerCase();
+        const hit = !terms.length || terms.some((w) => hay.includes(w) || (w.length > 4 && hay.includes(w.slice(0, -1))));
+        el.hidden = !hit; if (hit) n++;
+        const qEl = el.querySelector('.cq'); qEl.innerHTML = hl(qEl.dataset.t);
+        const aEl = el.querySelector('.rin p'); if (typed.has(Number(el.dataset.i))) aEl.innerHTML = hl(aEl.dataset.t);
+        if (hit && terms.length) { typed.add(Number(el.dataset.i)); aEl.innerHTML = hl(aEl.dataset.t); setOpen(el, true, true); }
+      });
+      let none = $('.none', box);
+      if (q && !n) {
+        if (!none) { none = document.createElement('div'); none.className = 'none'; box.appendChild(none); }
+        none.innerHTML = `<p>No answer for “${esc(input.value.trim())}” yet.</p><button class="btn white" type="button" id="askX">Ask it on X</button>`;
+        $('#askX').onclick = () => window.open('https://x.com/intent/tweet?text=' + encodeURIComponent((CFG.x ? '@' + CFG.x + ' ' : '') + input.value.trim() + ' $CART'), '_blank', 'noopener');
+      } else if (none) none.remove();
+      found.textContent = q ? (n ? n + (n === 1 ? ' answer' : ' answers') + ' for “' + input.value.trim() + '”' : '') : '';
+    };
+    input.addEventListener('input', search);
+    $('#askForm').addEventListener('submit', (e) => { e.preventDefault(); search(); const first = items.find((el) => !el.hidden); if (first) { first.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' }); first.classList.remove('flash'); void first.offsetWidth; first.classList.add('flash'); } });
+    box.addEventListener('click', (e) => {
+      const el = e.target.closest('.cm'); if (!el) return;
+      const lk = e.target.closest('.lk2');
+      if (lk) { const on = !lk.classList.contains('on'); lk.classList.toggle('on', on); lk.setAttribute('aria-pressed', on); lk.lastElementChild.textContent = on ? '1' : ''; return; }
+      if (e.target.closest('.vr,.cq')) setOpen(el, !el.classList.contains('open'));
+    });
+    box.addEventListener('dblclick', (e) => { const el = e.target.closest('.cm'); if (!el || e.target.closest('button')) return; const lk = el.querySelector('.lk2'); if (!lk.classList.contains('on')) lk.click(); });
+    $('#qs').addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      if (input.value) { input.value = ''; search(); }
+      const el = items[Number(b.dataset.i)]; setOpen(el, true);
+      el.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'center' }); el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
+    });
+    const all = $('#cmAll');
+    all.addEventListener('click', () => { const open = all.textContent === 'Open all'; items.forEach((el) => { if (!el.hidden) setOpen(el, open, true); }); all.textContent = open ? 'Close all' : 'Open all'; });
+    setOpen(items[0], true, true);
+  })();
 
   /* ---------------- maths */
   const cVol = $('#cVol'), cFee = $('#cFee'), cCpm = $('#cCpm');
