@@ -1,0 +1,14 @@
+{
+  "name": "cart",
+  "private": true,
+  "description": "CART: the memecoin that buys its own TikTok ads.",
+  "engines": { "node": "22.x" },
+  "dependencies": {
+    "@pump-fun/pump-sdk": "4.0.0",
+    "@solana/web3.js": "^1.98.2",
+    "bn.js": "^5.2.2"
+  },
+  "overrides": {
+    "rpc-websockets": "9.3.3"
+  }
+}
